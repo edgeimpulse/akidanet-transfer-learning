@@ -107,7 +107,7 @@ def train_model(train_dataset, validation_dataset, input_length, callbacks,
 
     
     
-    MODEL_INPUT_SHAPE = (160, 160, 3,)
+    MODEL_INPUT_SHAPE = (224, 224, 3,)
     learning_rate = 0.0005
     epochs = 20
     import tensorflow as tf
@@ -129,10 +129,7 @@ def train_model(train_dataset, validation_dataset, input_length, callbacks,
                                    activ_quantization=4,
                                    input_weight_quantization=8)
     
-    pretrained_weights = get_file(
-        "akidanet_imagenet_224_alpha_50_iq8_wq4_aq4.h5",
-        by_name=True)
-    
+    pretrained_weights = 'akidanet_imagenet_224_alpha_50_iq8_wq4_aq4.h5'
     base_model.load_weights(pretrained_weights, by_name=True)
     base_model.trainable = False
     
@@ -207,9 +204,7 @@ def train_model(train_dataset, validation_dataset, input_length, callbacks,
                                                       restore_best_weights=True)
     
     print('Fine-tuning to recover accuracy...')
-    akida_model.compile(optimizer=opt,
-                    loss=fine_tune_loss,
-                    metrics=fine_tune_metrics)
+    akida_model.compile(loss=fine_tune_loss,metrics=fine_tune_metrics)
     
     akida_model.fit(train_dataset,
                     epochs=30,

@@ -13,21 +13,21 @@ You run this pipeline via Docker. This encapsulates all dependencies and package
 3. Build the container:
 
     ```
-    $ docker build -t custom-block-134706 .
+    $ docker build -t akidanet-transfer-learning . --progress=plain 2>&1 | tee  build.log
     ```
-
+ß
 4. Train your model:
 
     **macOS, Linux**
 
     ```
-    $ docker run --rm -v $PWD:/scripts custom-block-134706 --data-directory data --out-directory out
+    $ docker run --rm -v $PWD:/scripts akidanet-transfer-learning --data-directory data --out-directory out  2>&1 | tee  run.log
     ```
 
     **Windows**
 
     ```
-    $ docker run --rm -v "%cd%":/scripts custom-block-134706 --data-directory data --out-directory out
+    $ docker run --rm -v "%cd%":/scripts akidanet-transfer-learning --data-directory data --out-directory out
     ```
 
 5. This will write your model (in TFLite, Saved Model and H5 format) to the `out/` directory.
@@ -73,7 +73,7 @@ You can also push this block back to Edge Impulse, that makes it available like 
 
 1. Build the container (see above).
 2. Go to an organization, **Custom blocks > Machine learning > Add new Machine learning block**.
-3. Set 'Docker container' to `custom-block-134706`.
+3. Set 'Docker container' to `akidanet-transfer-learning`.
 4. Add the block under **Create impulse**.
 
 This is a lot faster than building through the CLI, as you bypass Kaniko.
