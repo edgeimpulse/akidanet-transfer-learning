@@ -1,0 +1,21 @@
+{
+    "classes": [
+        "lamp",
+        "plant",
+        "unknown"
+    ],
+    "mode": "classification",
+    "printHWInfo": false,
+    "inputShapeString": "(160, 160, 3)",
+    "yType": "npy",
+    "trainTestSplit": 0.2,
+    "stratifiedTrainTest": false,
+    "convertInt8": true,
+    "profileInt8": true,
+    "objectDetectionAugmentation": false,
+    "syntiantTarget": false,
+    "maxTrainingTimeSeconds": 28800,
+    "isEnterpriseProject": true,
+    "flattenDataset": false,
+    "akidaModel": true
+}
